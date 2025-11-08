@@ -1,0 +1,39 @@
+# ============================================
+# NANDANI's SCHOOL - ALL COMMANDS AT ONCE
+# Copy everything below and paste in terminal
+# ============================================
+
+# Check Node.js (install if needed)
+node --version || echo "Install Node.js from https://nodejs.org/"
+
+# Clone and Setup
+git clone https://github.com/Amendrachaudhary/online_education_platform.git && \
+cd online_education_platform && \
+cd Edemy-LMS/server && npm install && \
+cd ../client && npm install && \
+cd ../server && cat > .env << 'ENVEOF'
+PORT=5000
+DB_HOST=localhost
+DB_USER=postgres
+DB_PASSWORD=password
+DB_NAME=education_system
+DB_PORT=5432
+CLERK_SECRET_KEY=demo_key
+CLOUDINARY_NAME=demo
+CLOUDINARY_API_KEY=demo
+CLOUDINARY_SECRET_KEY=demo
+FRONTEND_URL=http://localhost:5173
+ENVEOF
+cd ../client && cat > .env << 'ENVEOF'
+VITE_BACKEND_URL=http://localhost:5000
+VITE_CURRENCY=$
+ENVEOF
+cd ../.. && \
+echo "" && \
+echo "✅ Setup Complete!" && \
+echo "" && \
+echo "Now run in Terminal 1: cd Edemy-LMS/server && npm run server" && \
+echo "Now run in Terminal 2: cd Edemy-LMS/client && npm run dev" && \
+echo "" && \
+echo "Then open: http://localhost:5173"
+
